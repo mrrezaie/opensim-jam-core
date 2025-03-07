@@ -1,4 +1,3 @@
-#
 # Build of OpenSim. There are three steps:
 #    (1) Choose appropriate platform
 #    (2) Locate Simbody and its dependent libraries
