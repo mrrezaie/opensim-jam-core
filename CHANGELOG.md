@@ -6,8 +6,8 @@ request related to the change, then we may provide the commit.
 
 This is not a comprehensive list of changes but rather a hand-curated collection of the more notable ones. For a comprehensive history, see the [OpenSim Core GitHub repo](https://github.com/opensim-org/opensim-core).
 
-v4.6
-====
+v4.5.2
+======
 - The performance of `getStateVariableValue`, `getStateVariableDerivativeValue`, and `getModelingOption` was improved in
   the case where provided string is just the name of the value, rather than a path to it (#3782)
 - Fixed bugs in `MocoStepTimeAsymmetryGoal::printDescriptionImpl()` where there were missing or incorrect values printed. (#3842)
@@ -86,7 +86,12 @@ v4.6
 - Support using swig version 4.2 to generate Java & Python bindings. (#4028)
 - Added `ExpressionBasedPathForce`, which can be used to create non-linear path springs or 
   other path-based force elements dependent on a user-provided expression. (#4035)
-
+- Fixed a bug where `DeGrooteFregly2016Muscle::getBoundsNormalizedFiberLength()` was returning
+  tendon force bounds rather than fiber length bounds. (#4040)
+- Fixed bugs in `PolynomialPathFitter` when too few coordinate samples were provided. (#4039)
+- Exposed the "dissipated energy" state variable allocated by the `SimTK::Force::LinearBushing` that is internal to `BushingForce`. 
+  This change fixed a bug in Moco where adding a `BushingForce` led to a segfault due to a mismatch between the size of the 
+  auxiliary state vector reserved by Moco and `SimTK::State::getZ()`. (#4054)
 
 
 v4.5.1
